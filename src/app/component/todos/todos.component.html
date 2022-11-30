@@ -1,0 +1,16 @@
+<div class="container-fluid backgroundColor">
+  <h1 class="text-center text-capitalize">{{ title }}</h1>
+
+  <div class="d-flex justify-content-center">
+    <app-add-todo (addTodo)="receiveNewTodo($event)" [Todos]="TodosList" ></app-add-todo>
+  </div>
+
+  <div *ngIf="!errMesssage; else elseBlock">
+    <!-- passs todo list in child component  -->
+    <app-todo-item [Todos]="TodosList" (deleteTodo)="recieveDeleteTodo($event)"></app-todo-item>
+  </div>
+
+  <ng-template #elseBlock
+    ><p class="text-danger">{{ errMesssage }}</p></ng-template
+  >
+</div>

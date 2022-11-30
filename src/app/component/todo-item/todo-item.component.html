@@ -1,0 +1,71 @@
+<section class="pb-5 header text-center">
+  <div class="container text-white">
+    <div class="row">
+      <div class="col-lg-7 mx-auto">
+        <div class="card border-0 shadow">
+          <h5 class="text-danger text-capitalize">{{ title }}</h5>
+          >
+          <hr style="color: red" />
+          <div class="card-body p-5">
+            <div class="table-responsive">
+              <table class="table m-0">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>#</th>
+                    <th>title</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let todo of Todos">
+                    <td>
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        (change)="todoCompleted(todo)"
+                      />
+                    </td>
+                    <td>{{ todo.id }}</td>
+                    <td>{{ todo.title }}</td>
+                    <td>{{ todo.description }}</td>
+                    <td>
+                      <!-- Call to action buttons -->
+                      <ul class="list-inline m-0">
+                        <li class="list-inline-item">
+                          <button
+                            class="btn btn-success btn-sm rounded-0"
+                            type="button"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Edit"
+                            (click)="TodoEdit(todo)"
+                          >
+                            Edit
+                          </button>
+                        </li>
+                        <li class="list-inline-item">
+                          <button
+                            class="btn btn-danger btn-sm rounded-0"
+                            type="button"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Delete"
+                            (click)="TodoDelete(todo)"
+                          >
+                            Delete
+                          </button>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
