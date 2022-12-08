@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <!-- add todo component -->
+      <app-add (emitTodo)="softupdateTodoList($event)"></app-add>
+    </div>
+    <div class="col-sm-8">
+      <!-- todo list component -->
+      <app-list [AllTodo]="todolists" (DeleteTodo)="softDeleteTodoList($event)"></app-list>
+    </div>
+  </div>
+</div>

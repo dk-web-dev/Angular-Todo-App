@@ -1,0 +1,58 @@
+<section class="pb-5 header text-center">
+        <div class="card border-0 shadow">
+          <h5 class="text-danger text-capitalize">{{ title }}</h5>
+          <hr style="color: red" />
+          <div class="card-body p-5">
+            <div class="table-responsive">
+              <table class="table m-0" >
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>title</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let todo of AllTodo">
+                    <td>{{ todo.id }}</td>
+                    <td>{{ todo.title }}</td>
+                    <td>{{ todo.description }}</td>
+                    <td>
+                      <!-- Call to action buttons -->
+                      <ul class="list-inline m-0">
+                        <li class="list-inline-item">
+                          <button
+                            mat-raised-button
+                            color="accent"
+                            type="button"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Edit"
+                            [routerLink]="['/edit',todo._id]"
+                          >
+                            Edit
+                          </button>
+                        </li>
+                        <li class="list-inline-item">
+                          <button
+                            mat-raised-button
+                            color="warn"
+                            type="button"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Delete"
+                            (click)="deleteTodo(todo)"
+                          >
+                            Delete
+                          </button>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+</section>

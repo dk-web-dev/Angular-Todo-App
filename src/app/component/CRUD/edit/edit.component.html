@@ -1,0 +1,51 @@
+<form #todoform="ngForm">
+  <div >
+    <mat-card-header>
+      <mat-card-title>Edit Todo </mat-card-title>
+    </mat-card-header>
+    <mat-form-field appearance="fill">
+      <mat-label>Todo Name</mat-label>
+      <input
+        matInput
+        name="title"
+        #todotitle="ngModel"
+        placeholder="Enter Todo name"
+        [(ngModel)]="singleTodo.title"
+        [required]="true"
+      />
+      <mat-error *ngIf="todotitle.invalid && todotitle.touched"
+      >Please Add Title</mat-error
+    >
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field appearance="fill">
+      <mat-label>Todo description</mat-label>
+      <input
+        matInput
+        name="description"
+        #todoDesc="ngModel"
+        placeholder="Enter todo description"
+        [(ngModel)]="singleTodo.description"
+        [required]="true"
+      />
+      <mat-error *ngIf="todoDesc.invalid && todoDesc.touched"
+      >Please Add Description</mat-error
+    >
+    </mat-form-field>
+    <br /><br/>
+
+    <mat-card-actions align="end">
+      <button
+        [disabled]="todoform.invalid"
+        mat-raised-button
+        type="submit"
+        color="primary"
+        (click)="editTodo(singleTodo)"
+      >
+        edit todo
+      </button>
+    </mat-card-actions>
+  </div>
+</form>

@@ -1,8 +1,8 @@
-import { Component, EventEmitter, OnInit, Output,Input } from '@angular/core';
-
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 
 import { Addtodo } from './addtodo';
 import { Todos } from 'src/app/interface/todos';
+
 
 @Component({
   selector: 'app-add-todo',
@@ -12,13 +12,12 @@ import { Todos } from 'src/app/interface/todos';
 export class AddTodoComponent implements OnInit {
   todoModel = new Addtodo('', '');
 
-  @Input() Todos: Todos[] = [];  // parent to child (todos => app-add-todo)
+  @Input() Todos: Todos[] = []; // parent to child (todos => app-add-todo)
   @Output() addTodo = new EventEmitter();
 
   constructor() {}
 
-  ngOnInit(): void {}
-
+  ngOnInit():void { }
 
   //submit  new todo
   submitTodo() {
@@ -29,7 +28,7 @@ export class AddTodoComponent implements OnInit {
       description: this.todoModel.description,
       active: true,
     };
-    console.log("from child",todoDetail);
+    console.log('from child', todoDetail);
     this.addTodo.emit(todoDetail);
   }
 }
