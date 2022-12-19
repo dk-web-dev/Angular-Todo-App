@@ -1,4 +1,4 @@
-<form #todoform="ngForm">
+<form [formGroup]="TodoForm">
   <div class="example-container">
     <mat-card-header>
       <mat-card-title>Add Todo </mat-card-title>
@@ -8,12 +8,11 @@
       <input
         matInput
         name="title"
+        formControlName="title"
         placeholder="Enter Todo name"
-        #todotitle="ngModel"
-        [(ngModel)]="todoModel.title"
         [required]="true"
       />
-      <mat-error *ngIf="todotitle.invalid && todotitle.touched"
+      <mat-error *ngIf="f.title.invalid && f.title.touched"
         >Please Add Title</mat-error
       >
     </mat-form-field>
@@ -25,24 +24,23 @@
       <input
         matInput
         name="description"
+        formControlName="description"
         placeholder="Enter todo description"
-        #todoDesc="ngModel"
-        [(ngModel)]="todoModel.description"
         [required]="true"
       />
-      <mat-error *ngIf="todoDesc.invalid && todoDesc.touched"
+      <mat-error *ngIf="f.description.invalid && f.description.touched"
         >Please Add Description</mat-error
       >
     </mat-form-field>
-    <br /><br/>
+    <br /><br />
 
     <mat-card-actions align="end">
       <button
-        [disabled]="todoform.invalid"
+        [disabled]="TodoForm.invalid"
         mat-raised-button
         type="submit"
         color="primary"
-        (click)="addTodo(); todoform.reset()"
+        (click)="addTodo(); TodoForm.reset()"
       >
         Add todo
       </button>

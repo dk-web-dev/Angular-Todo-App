@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import { CrudService } from 'src/app/services/crud.service';
 import { ToastrService } from 'ngx-toastr';
+import { ITodolist } from 'src/app/interface/crud/todolist.interface';
+
+interface SingleTodo {
+  _id:string,
+  title: string;
+  description:string
+}
 
 @Component({
   selector: 'app-edit',
@@ -9,8 +16,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./edit.component.css'],
 })
 export class EditComponent implements OnInit {
-
-  singleTodo:any=[];
+  //singleTodo:Employee={};
+   singleTodo = {} as SingleTodo;
 
   constructor(
     private _crudService: CrudService,
@@ -19,26 +26,31 @@ export class EditComponent implements OnInit {
     private route:Router
   ) {}
 
-  ngOnInit(): void {
-    let id: any = this.router.snapshot.paramMap.get('id');
+  ngOnInit(): void {     
+    let id:string | null = this.router.snapshot.paramMap.get('id');
+    
+    this.getEditTodo(id)  // call method for fetch single todo by id
+ 
+  }
 
-    // feth single todo method
+ // feth single todo method
+  getEditTodo(id: string | null){
     this._crudService.getTodoById(id).subscribe({
-       next:(res)=>{
-          console.log(res);
-          this.singleTodo = res;
-       },
-       error:(err)=>{
-          console.log(err);
-       },
-       complete:()=>{
-          console.log("fetch single todo completed")
-       }
+      next:(res)=>{
+        console.log("single todo",res);
+        this.singleTodo = res;
+      },
+      error:(err)=>{
+        console.log(err);
+      },
+      complete:()=>{
+        console.log("fetch single todo completed")
+      }
     })
   }
 
   //edit todo
-  editTodo(todo:any) {
+  editTodo(todo:ITodolist) {
     console.log('update todo detail',todo);
     this._crudService.editTodo(todo).subscribe({
       next:(res)=>{

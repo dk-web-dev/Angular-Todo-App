@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { CrudService } from 'src/app/services/crud.service';
+import {ITodolist} from '../../../interface/crud/todolist.interface'
 
 @Component({
   selector: 'app-list',
@@ -8,8 +9,8 @@ import { CrudService } from 'src/app/services/crud.service';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  title = 'todo lists';
-  @Input() AllTodo: any = []; // parent to child (todos => todo-item)
+  title:string = 'todo lists';
+  @Input() AllTodo: ITodolist[] = []; // parent to child (todos => todo-item)
   @Output() DeleteTodo = new EventEmitter();
 
   constructor(
@@ -20,7 +21,7 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {}
 
   // delete todo
-  deleteTodo(todo: any) {
+  deleteTodo(todo: ITodolist) {
     this._crudService.deleteTodo(todo._id).subscribe({
       next: (res) => {
         console.log(res);

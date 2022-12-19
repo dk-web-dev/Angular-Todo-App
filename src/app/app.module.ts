@@ -5,8 +5,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+//import interceptor
+import { SecurityTokenInterceptor } from './interceptors/security-token.interceptor';
 
 //import material module
 import { MaterialModule } from './component/material/material.module';
@@ -57,7 +60,11 @@ import { TodoMainComponent } from './component/CRUD/todo-main/todo-main.componen
     FlexLayoutModule,
     MatNativeDateModule
   ],
-  providers: [],
+  providers: [ {
+    provide: HTTP_INTERCEPTORS,
+    useClass: SecurityTokenInterceptor,
+    multi: true
+}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

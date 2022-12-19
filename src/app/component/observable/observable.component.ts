@@ -14,7 +14,6 @@ import {
   switchMap,
   mergeMap,
 } from 'rxjs';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import {
   faAngular,
   faFacebook,
@@ -174,8 +173,8 @@ export class ObservableComponent implements OnInit {
     });
 
     //MERGE MAP() operator
-    const obs$3 = of([1,2,3]);
-    const obs$4 = of([8,9,10]);
+    const obs$3 = of([1, 2, 3]);
+    const obs$4 = of([8, 9, 10]);
     const finalmergeMap = obs$3.pipe(
       mergeMap((event1) => obs$4.pipe(map((event2) => event1 + ' ' + event2)))
     );
@@ -184,7 +183,5 @@ export class ObservableComponent implements OnInit {
       error: (err) => console.log(err),
       complete: () => console.log('mergeMap() operator completed'),
     });
-
-
   }
 }

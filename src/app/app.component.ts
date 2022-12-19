@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,isDevMode } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,14 @@ export class AppComponent {
   title = 'Angular-Material';
   setTheme: boolean = false;
 
+  ngOnInit() {
+    if (isDevMode()) {
+      console.log('Development!');
+    } else {
+      console.log('Production!');
+    }
+  }
+   
   changeTheme(event: boolean) {
     this.setTheme = event;
 
