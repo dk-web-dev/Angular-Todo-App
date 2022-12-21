@@ -8,6 +8,7 @@ import { ObservableComponent } from './component/observable/observable.component
 import { TodoMainComponent } from './component/CRUD/todo-main/todo-main.component';
 import { EditComponent } from './component/CRUD/edit/edit.component';
 import { NotfoundComponent } from './component/notfound/notfound.component';
+import { AnimationComponent } from './component/animation/animation.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'observable', component: ObservableComponent },
   { path: 'crud', component: TodoMainComponent },
   { path: 'edit/:id', component: EditComponent },
+  {path:'animation',component:AnimationComponent},
   { path: '**', component: NotfoundComponent },
 ];
 

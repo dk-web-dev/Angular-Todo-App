@@ -29,6 +29,8 @@ import { AddComponent } from './component/CRUD/add/add.component';
 import { EditComponent } from './component/CRUD/edit/edit.component';
 import { ListComponent } from './component/CRUD/list/list.component';
 import { TodoMainComponent } from './component/CRUD/todo-main/todo-main.component';
+import { AnimationComponent } from './component/animation/animation.component';
+import { ChangeAnimationComponent } from './component/animation/change-animation/change-animation.component';
 
 
 @NgModule({
@@ -46,6 +48,8 @@ import { TodoMainComponent } from './component/CRUD/todo-main/todo-main.componen
     EditComponent,
     ListComponent,
     TodoMainComponent,
+    AnimationComponent,
+    ChangeAnimationComponent,
   ],
   imports: [
     BrowserModule,

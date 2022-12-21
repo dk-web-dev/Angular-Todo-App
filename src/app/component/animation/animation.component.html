@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-6">
+    <button mat-flat-button color="primary" (click)="toggle()">
+      Open/close
+    </button>
+    <div [@openClose]="isOpen ? 'open' : 'close'" class="myDiv">
+      <p>the box is now {{ isOpen ? "opend" : "closed" }}</p>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <app-change-animation></app-change-animation>
+  </div>
+</div>
